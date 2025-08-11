@@ -20,6 +20,7 @@ const ETHERSCAN_APIKEY_SEPOLIA = process.env.ETHERSCAN_APIKEY_SEPOLIA || ''
 const config: HardhatUserConfig = {
     solidity: "0.8.28",
     mocha: { timeout: 300000 },
+    sourcify: { enabled: true }, //用来验证合约
     networks: {
         sepolia: {
             url: SEPOLIA_URL,
