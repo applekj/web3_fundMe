@@ -14,11 +14,13 @@ const main = async () => {
     // 等待合约部署成功
     await fundMe.waitForDeployment()
     console.log(`contract has been deployed successfully, contract address is ${fundMe.target}`)
-    console.log("it's waitting for 5 confirmations")
+
     if (!process.env.ETHERSCAN_APIKEY_SEPOLIA) {
         console.log('verification skippek...')
         return
     }
+
+    console.log("it's waitting for 5 confirmations")
     // 等待合约被5个区块确认
     await fundMe.deploymentTransaction()?.wait(5)
     // 验证合约

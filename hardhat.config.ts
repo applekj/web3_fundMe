@@ -12,37 +12,37 @@ import { ProxyAgent, setGlobalDispatcher } from "undici";
 const proxyAgent = new ProxyAgent("http://127.0.0.1:33210");
 setGlobalDispatcher(proxyAgent);
 
-
 const SEPOLIA_URL = process.env.SEPOLIA_URL || ''
 const PRIVATE_KEY_1 = process.env.PRIVATE_KEY_1 || ''
+const PRIVATE_KEY_2 = process.env.PRIVATE_KEY_2 || ''
 const ETHERSCAN_APIKEY_SEPOLIA = process.env.ETHERSCAN_APIKEY_SEPOLIA || ''
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.28",
-  mocha: { timeout: 300000 },
-  networks: {
-    sepolia: {
-      url: SEPOLIA_URL,
-      accounts: [PRIVATE_KEY_1],
-      chainId: 11155111
-    }
-  },
-  etherscan: {
-    apiKey: {
-      sepolia: ETHERSCAN_APIKEY_SEPOLIA
-    }
-  },
-  namedAccounts: {
-    firstAccount: {
-      default: 0
+    solidity: "0.8.28",
+    mocha: { timeout: 300000 },
+    networks: {
+        sepolia: {
+            url: SEPOLIA_URL,
+            accounts: [PRIVATE_KEY_1, PRIVATE_KEY_2],
+            chainId: 11155111
+        }
     },
-    secondAccount: {
-      default: 1
+    etherscan: {
+        apiKey: {
+            sepolia: ETHERSCAN_APIKEY_SEPOLIA
+        }
+    },
+    namedAccounts: {
+        firstAccount: {
+            default: 0
+        },
+        secondAccount: {
+            default: 1
+        }
+    },
+    gasReporter: {
+        enabled: false
     }
-  },
-  gasReporter: {
-    enabled: false
-  }
 };
 
 export default config;

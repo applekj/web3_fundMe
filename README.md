@@ -8,7 +8,8 @@ Try running some of the following tasks:
 npx env-enc set-pw
 npx hardhat compile
 npx hardhat run scripts/deployFundMe.js --network sepolia 
-npx hardhat deploy-fundme
+npx hardhat deploy-fundme --network sepolia
+npx hardhat interact-fundme --addr .......... --network sepolia
 npx hardhat test
 npx hardhat test --network sepolia
 npx hardhat coverage
